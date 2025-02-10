@@ -1,6 +1,5 @@
 package model;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +19,7 @@ public class TestCampaign {
 
     @Test
     void testConstructor() {
-        assertEquals(0, campaign.getCharacters());
+        assertEquals(0, campaign.getCharacters().size());
     }
 
     @Test
@@ -42,7 +41,7 @@ public class TestCampaign {
         campaign.addCharacter(c2);
         campaign.addCharacter(c1);
         campaign.removeCharacter(c1);
-        assertNull(campaign.getCharacters().get(1));
+        assertEquals(1, campaign.getCharacters().size());
     }
 
     @Test
@@ -51,8 +50,7 @@ public class TestCampaign {
         campaign.addCharacter(c1);
         campaign.removeCharacter(c1);
         campaign.removeCharacter(c2);
-        assertNull(campaign.getCharacters().get(1));
-        assertNull(campaign.getCharacters().get(0));
+        assertEquals(0, campaign.getCharacters().size());
     }
 
     @Test
@@ -80,6 +78,6 @@ public class TestCampaign {
     void testEditCharacterBackstory() {
         campaign.addCharacter(c2);
         campaign.editCharacterBackstory(c2, "Hello world");
-        assertEquals("Hello world", c2.getName());
+        assertEquals("Hello world", c2.getBackstory());
     }
 }

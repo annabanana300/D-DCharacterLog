@@ -16,42 +16,42 @@ public class Campaign {
     //MODIFIES: this
     //EFFECTS: creates a new character to add to campaign
     public void addCharacter(Character c) {
-
+        characters.add(c);
     }
 
     //REQUIRES: character already exists in campaign
     //MODIFIES: this
     //EFFECTS: removes a character from campaign
     public void removeCharacter(Character c) {
-
+        characters.remove(c);
     }
 
     //REQUIRES: character exists in campaign
     //MODIFIES: this
     //EFFECTS: user can edit existing character name
     public void editCharacterName(Character c, String name) {
-
+        c.setName(name);
     }
 
     //REQUIRES: character exists in campaign
     //MODIFIES: this
     //EFFECTS: user can edit existing character's race
     public void editCharacterRace(Character c, String race) {
-        
+        c.setRace(race);
     }
 
     //REQUIRES: character exists in campaign
     //MODIFIES: this
     //EFFECTS: user can edit existing character's class
     public void editCharacterClass(Character c, String characterClass) {
-        
+        c.setClass(characterClass);
     }
 
     //REQUIRES: character exists in campaign
     //MODIFIES: this
     //EFFECTS: user can edit existing character's backstory
     public void editCharacterBackstory(Character c, String story) {
-        
+        c.setBackstory(story);
     }
 
     //getters

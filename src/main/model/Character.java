@@ -5,45 +5,51 @@ package model;
 //represents a character in a D&D campaign
 public class Character {
     String name;
+    String race;
+    String characterClass;
+    String backstory;
     
     //EFFECTS: constructs a new character
     public Character() {
-        
+        name = null;
+        race = null;
+        characterClass = null;
+        backstory = null;
     }
 
     //setters
-    public void setName() {
-
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setRace() {
-
+    public void setRace(String race) {
+        this.race = race;
     }
 
-    public void setClass() {
-        
+    public void setClass(String characterClass) {
+        this.characterClass = characterClass;
     }
 
-    public void setBackstory() {
-
+    public void setBackstory(String backstory) {
+        this.backstory = backstory;
     }
 
 
     //getters
     public String getName() {
-        return null; //stub
+        return name;
     }
 
     public String getRace() {
-        return null; //stub
+        return race;
     }
 
     public String getCharacterClass() {
-        return null; //stub
+        return characterClass;
     }
 
     public String getBackstory() {
-        return null; //stub
+        return backstory;
     }
 
 }

@@ -18,7 +18,7 @@ public class TestCharacter {
     void testConstructor() {
         assertNull(c.getName());
         assertNull(c.getRace());
-        assertNull(c.getClass());
+        assertNull(c.getCharacterClass());
         assertNull(c.getBackstory());
     }
 
