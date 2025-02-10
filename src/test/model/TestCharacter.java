@@ -1,19 +1,26 @@
 package model;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestCharacter {
+
+    public Character c;
     
     @BeforeEach
     void runBefore() {
-
+        c = new Character();
     }
 
     @Test
-    void sampleTest() {
-        assertTrue(true);
+    void testConstructor() {
+        assertNull(c.getName());
+        assertNull(c.getRace());
+        assertNull(c.getClass());
+        assertNull(c.getBackstory());
     }
+
+    
 }
