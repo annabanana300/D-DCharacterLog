@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,14 @@ public class TestCampaign {
     @Test
     void testConstructor() {
         assertEquals(0, campaign.getCharacters().size());
+        assertNull(campaign.getCurrentCharacter());
+    }
+
+    @Test
+    void testRemoveCurrentCharacter() {
+        campaign.currentCharacter(c1);
+        campaign.removeCurrentCharacter();
+        assertNull(campaign.getCurrentCharacter());
     }
 
     @Test
@@ -40,7 +49,8 @@ public class TestCampaign {
     void testRemoveCharacterOnce() {
         campaign.addCharacter(c2);
         campaign.addCharacter(c1);
-        campaign.removeCharacter(c1);
+        campaign.currentCharacter(c1);
+        campaign.deleteCharacter();
         assertEquals(1, campaign.getCharacters().size());
     }
 
@@ -48,36 +58,60 @@ public class TestCampaign {
     void testRemoveCharacterMult() {
         campaign.addCharacter(c2);
         campaign.addCharacter(c1);
-        campaign.removeCharacter(c1);
-        campaign.removeCharacter(c2);
+        campaign.currentCharacter(c1);
+        campaign.deleteCharacter();
+        campaign.currentCharacter(c2);
+        campaign.deleteCharacter();
         assertEquals(0, campaign.getCharacters().size());
     }
 
     @Test
     void testEditCharacterName() {
         campaign.addCharacter(c2);
-        campaign.editCharacterName(c2, "Yob");
+        campaign.currentCharacter(c2);
+
+        campaign.editCharacterName("Yob");
         assertEquals("Yob", c2.getName());
     }
 
     @Test
     void testEditCharacterRace() {
         campaign.addCharacter(c2);
-        campaign.editCharacterRace(c2, "Human");
+        campaign.currentCharacter(c2);
+
+        campaign.editCharacterRace("Human");
         assertEquals("Human", c2.getRace());
     }
 
     @Test
     void testEditCharacterClass() {
         campaign.addCharacter(c1);
-        campaign.editCharacterClass(c1, "Cleric");
+        campaign.currentCharacter(c1);
+
+        campaign.editCharacterClass("Cleric");
         assertEquals("Cleric", c1.getCharacterClass());
     }
 
     @Test
     void testEditCharacterBackstory() {
         campaign.addCharacter(c2);
-        campaign.editCharacterBackstory(c2, "Hello world");
+        campaign.currentCharacter(c2);
+
+        campaign.editCharacterBackstory("Hello world");
         assertEquals("Hello world", c2.getBackstory());
+    }
+
+    @Test
+    void testCurrentCharacter() {
+        campaign.currentCharacter(c1);
+        assertEquals(c1, campaign.getCurrentCharacter());
+    }
+
+    @Test
+    void testCurrentCharacterMult() {
+        campaign.currentCharacter(c1);
+        assertEquals(c1, campaign.getCurrentCharacter());
+        campaign.currentCharacter(c2);
+        assertEquals(c2, campaign.getCurrentCharacter());
     }
 }

@@ -1,7 +1,5 @@
 package model;
 
-//import java.util.ArrayList;
-
 //represents a character in a D&D campaign
 public class Character {
     String name;

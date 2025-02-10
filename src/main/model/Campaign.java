@@ -7,10 +7,18 @@ import java.util.ArrayList;
 public class Campaign {
 
     ArrayList<Character> characters;
+    Character current;
 
     //EFFECTS: constructs an empty campaign
     public Campaign() {
         characters = new ArrayList<>();
+        current = null;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: sets current character to chosen character
+    public void currentCharacter(Character c) {
+        this.current = c;
     }
 
     //MODIFIES: this
@@ -19,45 +27,56 @@ public class Campaign {
         characters.add(c);
     }
 
-    //REQUIRES: character already exists in campaign
+    //REQUIRES: character already exists in campaign && current != null
     //MODIFIES: this
     //EFFECTS: removes a character from campaign
-    public void removeCharacter(Character c) {
-        characters.remove(c);
+    public void deleteCharacter() {
+        characters.remove(current);
     }
 
-    //REQUIRES: character exists in campaign
+    //REQUIRES: character exists in campaign && current != null
     //MODIFIES: this
     //EFFECTS: user can edit existing character name
-    public void editCharacterName(Character c, String name) {
-        c.setName(name);
+    public void editCharacterName(String name) {
+        current.setName(name);
     }
 
-    //REQUIRES: character exists in campaign
+    //REQUIRES: character exists in campaign && current != null
     //MODIFIES: this
     //EFFECTS: user can edit existing character's race
-    public void editCharacterRace(Character c, String race) {
-        c.setRace(race);
+    public void editCharacterRace(String race) {
+        current.setRace(race);
     }
 
-    //REQUIRES: character exists in campaign
+    //REQUIRES: character exists in campaign && current != null
     //MODIFIES: this
     //EFFECTS: user can edit existing character's class
-    public void editCharacterClass(Character c, String characterClass) {
-        c.setClass(characterClass);
+    public void editCharacterClass(String characterClass) {
+        current.setClass(characterClass);
     }
 
-    //REQUIRES: character exists in campaign
+    //REQUIRES: character exists in campaign && current != null
     //MODIFIES: this
     //EFFECTS: user can edit existing character's backstory
-    public void editCharacterBackstory(Character c, String story) {
-        c.setBackstory(story);
+    public void editCharacterBackstory(String story) {
+        current.setBackstory(story);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: sets current character to null
+    public void removeCurrentCharacter() {
+        current = null;
     }
 
     //getters
     //EFFECTS: get list of characters currently in campaign
     public ArrayList<Character> getCharacters() {
         return characters;
+    }
+
+    //EFFECTS: get current character; null if not set
+    public Character getCurrentCharacter() {
+        return current;
     }
 
 }
