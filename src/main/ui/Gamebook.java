@@ -21,14 +21,18 @@ public class Gamebook {
     public void mainMenu() {
         printCampaign();
         String option = this.scanner.nextLine();
-        //processMenuRequest(option);
+        processMainMenuRequest(option);
     }
 
     //EFFECTS: prints menu options
     public void printCampaign() {
         System.out.println("Select an option on your keyboard:");
         System.out.println("q: View all characters");
-        System.out.println("w: Add a character");
-        System.out.println("e: Remove a character");
+        System.out.println("w: Add a new character");
+        System.out.println("e: Close application");
+    }
+
+    public void processMainMenuRequest(String option) {
+        
     }
 }
