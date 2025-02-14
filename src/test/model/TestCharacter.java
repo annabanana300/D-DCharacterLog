@@ -7,19 +7,19 @@ import org.junit.jupiter.api.Test;
 
 public class TestCharacter {
 
-    public Character c;
+    private Character character;
     
     @BeforeEach
     void runBefore() {
-        c = new Character();
+        character = new Character();
     }
 
     @Test
     void testConstructor() {
-        assertNull(c.getName());
-        assertNull(c.getRace());
-        assertNull(c.getCharacterClass());
-        assertNull(c.getBackstory());
+        assertNull(character.getName());
+        assertNull(character.getRace());
+        assertNull(character.getCharacterClass());
+        assertNull(character.getBackstory());
     }
 
     

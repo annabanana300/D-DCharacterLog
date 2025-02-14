@@ -84,17 +84,18 @@ public class Gamebook {
                 break;
             }
         }
-        //processMainMenuRequest(option);
+        // processMainMenuRequest(option);
     }
 
     // menu for editing character options
     public void selectedCharacterMenu() {
-        System.out.println("\n What would you like to edit about your character?");
+        System.out.println("\n Would you like to change any of the following about your character?");
         System.out.println("z: Name");
         System.out.println("x: Race");
         System.out.println("c: Class");
         System.out.println("v: Backstory");
-        System.out.println("b: Remove character");
+        System.out.println("b: View character profile");
+        System.out.println("n: Remove character");
     }
 
     // process editingCharacter commands
@@ -102,35 +103,67 @@ public class Gamebook {
 
         switch (selected) {
             case "z":
-                System.out.println("Enter character name:");
-                String newName = this.scanner.nextLine();
-                character.setName(newName);
+                editCharacterName(character);
                 break;
 
             case "x":
-                System.out.println("\nEnter character race:");
-                String newRace = this.scanner.nextLine();
-                character.setRace(newRace);
+                editCharacterRace(character);
                 break;
 
             case "c":
-                System.out.println("\nEnter character class:");
-                String newClass = this.scanner.nextLine();
-                character.setClass(newClass);
+                editCharacterClass(character);
                 break;
 
             case "v":
-                System.out.println("\nEnter character backstory:");
-                String newStory = this.scanner.nextLine();
-                character.setBackstory(newStory);
+                editCharacterBackstory(character);
                 break;
 
             case "b":
-                System.out.println("\n Say goodbye to " + character.getName() + "!");
-                campaign.currentCharacter(character);
-                campaign.deleteCharacter();
+                viewCharacter(character);
+                break;
+
+            case "n":
+                deleteCharacter(character);
                 break;
         }
+    }
+
+    // display character profile
+    public void viewCharacter(model.Character character) {
+        System.out.println("\n Character profile:");
+        System.out.println("Name: " + character.getName());
+        System.out.println("Race: " + character.getRace());
+        System.out.println("Class: " + character.getCharacterClass());
+        System.out.println("Backstory: " + character.getBackstory());
+    }
+
+    public void deleteCharacter(model.Character character) {
+        System.out.println("\n Say goodbye to " + character.getName() + "!");
+        campaign.deleteCharacter();
+    }
+
+    public void editCharacterName(model.Character character) {
+        System.out.println("Enter character name:");
+        String newName = this.scanner.nextLine();
+        character.setName(newName);
+    }
+
+    public void editCharacterRace(model.Character character) {
+        System.out.println("\nEnter character race:");
+        String newRace = this.scanner.nextLine();
+        character.setRace(newRace);
+    }
+
+    public void editCharacterClass(model.Character character) {
+        System.out.println("\nEnter character class:");
+        String newClass = this.scanner.nextLine();
+        character.setClass(newClass);
+    }
+
+    public void editCharacterBackstory(model.Character character) {
+        System.out.println("\nEnter character backstory:");
+        String newStory = this.scanner.nextLine();
+        character.setBackstory(newStory);
     }
 
     // add character to campaign
