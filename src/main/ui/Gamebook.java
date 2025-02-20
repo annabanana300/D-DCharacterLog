@@ -4,6 +4,7 @@ import model.Campaign;
 
 import java.util.Scanner;
 
+//UI class allowing user to access app's functions
 public class Gamebook {
     private Campaign campaign;
     private Scanner scanner;
@@ -37,7 +38,8 @@ public class Gamebook {
         System.out.println("e: Close application");
     }
 
-    // do menu request
+    //REQUIRES: option is one of q, w, e
+    //EFFECTS: do menu request
     public void processMainMenuRequest(String option) {
         switch (option) {
             case "q":
@@ -54,7 +56,7 @@ public class Gamebook {
         }
     }
 
-    // print all characters in campaign
+    //EFFECTS: print all characters in campaign
     public void viewCharacters() {
         System.out.println("Current characters in campaign: \n");
 
@@ -69,7 +71,7 @@ public class Gamebook {
         // display character list options: select character, remove character
     }
 
-    // options to select character or return home
+    //EFFECTS: computes options to select character or return home
     public void characterMenuProcess(String option) {
         if (campaign.getCharacters().size() == 0) {
             processMainMenuRequest(option);
@@ -87,7 +89,7 @@ public class Gamebook {
         // processMainMenuRequest(option);
     }
 
-    // menu for editing character options
+    //EFFECTS: prints menu for editing character options
     public void selectedCharacterMenu() {
         System.out.println("\n Would you like to change any of the following about your character?");
         System.out.println("z: Name");
@@ -98,7 +100,8 @@ public class Gamebook {
         System.out.println("n: Remove character");
     }
 
-    // process editingCharacter commands
+    //REQUIRES: character is one of z, x, c, v, b, n
+    //EFFECTS: process editingCharacter commands
     public void editCharacter(String selected, model.Character character) {
 
         switch (selected) {
@@ -128,7 +131,7 @@ public class Gamebook {
         }
     }
 
-    // display character profile
+    //EFFECTS: print character profile
     public void viewCharacter(model.Character character) {
         System.out.println("\n Character profile:");
         System.out.println("Name: " + character.getName());
@@ -137,36 +140,41 @@ public class Gamebook {
         System.out.println("Backstory: " + character.getBackstory());
     }
 
+    //EFFECTS: delete selected character from campaign
     public void deleteCharacter(model.Character character) {
         System.out.println("\n Say goodbye to " + character.getName() + "!");
         campaign.deleteCharacter();
     }
 
+    //EFFECTS: changes character's name to given string
     public void editCharacterName(model.Character character) {
         System.out.println("Enter character name:");
         String newName = this.scanner.nextLine();
         character.setName(newName);
     }
 
+    //EFFECTS: changes character's race to given string
     public void editCharacterRace(model.Character character) {
         System.out.println("\nEnter character race:");
         String newRace = this.scanner.nextLine();
         character.setRace(newRace);
     }
 
+    //EFFECTS: changes character's class to given string
     public void editCharacterClass(model.Character character) {
         System.out.println("\nEnter character class:");
         String newClass = this.scanner.nextLine();
         character.setClass(newClass);
     }
 
+    //EFFECTS: changes character's backstory to given string
     public void editCharacterBackstory(model.Character character) {
         System.out.println("\nEnter character backstory:");
         String newStory = this.scanner.nextLine();
         character.setBackstory(newStory);
     }
 
-    // add character to campaign
+    //EFFECTS: add character to campaign
     public void addCharacter() {
         System.out.println("Enter character name:");
         String newName = this.scanner.nextLine();
@@ -192,7 +200,7 @@ public class Gamebook {
 
     }
 
-    // quit application
+    //EFFECTS: quit application
     public void quit() {
         appRunning = false;
     }

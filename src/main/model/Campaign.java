@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 //import java.util.List;
 
-//represents a D&D campaign showing all characters added
+//represents a D&D campaign showing all characters added and abilities to edit character
 public class Campaign {
 
     ArrayList<Character> characters;

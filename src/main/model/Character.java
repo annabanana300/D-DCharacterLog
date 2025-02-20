@@ -1,6 +1,6 @@
 package model;
 
-//represents a character in a D&D campaign
+//represents a character in a D&D campaign; includes methods to edit character
 public class Character {
     String name;
     String race;
