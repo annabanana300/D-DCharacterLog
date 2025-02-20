@@ -38,3 +38,7 @@ As a user, I want to be able to edit an added character's attributes
 As a user, I want to be able to remove a character from a campaign.
 
 As a user, I want to be able to view an added character in a campaign.
+
+As a user, I want to have the option to save my current campaign to file.
+
+As a user, I want to have the option to load my saved campaign file and resume from where I left off.
