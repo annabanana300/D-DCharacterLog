@@ -20,8 +20,8 @@ public class JsonReader {
     }
 
     //EFFECTS: reads a Campaign from saved file and returns it
-    //throws ReadErrorException if data cannot be read
-    public Campaign read() {
+    //throws IOException if data cannot be read
+    public Campaign read() throws IOException{
         return null;
     }
 
@@ -32,13 +32,14 @@ public class JsonReader {
 
     //EFFECTS: parse campaign from JSON object, return it
     private Campaign parseCampaign(JSONObject jsonObject) {
+        //key: "name"
         return null;
     }
 
     //MODIFIES: Campaign c
     //EFFECTS: parse characters from JSON object, add to campaign
     private void addCharacters(Campaign c, JSONObject jsonObject) {
-    
+        //key: "characters"
     }
 
     //MODIFIES: Campaign c

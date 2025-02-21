@@ -1,0 +1,16 @@
+{
+    "characters": [
+        {
+            "name": "Taro",
+            "race": "Half-Elf",
+            "class": "Cleric",
+            "backstory": "Taro wears a flowered eyepatch on her left eye after having poisoned tea spilled on her eye."
+        }, 
+        {
+            "name": "Peach",
+            "race": "Fairy",
+            "class": "Rogue",
+            "backstory": "Peach makes a living as a spy for those who wish to uncover secrets."
+        }
+    ]
+}
