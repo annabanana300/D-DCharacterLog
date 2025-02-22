@@ -12,7 +12,7 @@ public class JsonWriter {
 
     //MODIFIES: this
     //EFFECTS: open file writer, if file not found/cannot open throw FileNotFoundException
-    public void openWriter() {
+    public void openWriter() throws FileNotFoundException {
 
     }
 
