@@ -3,8 +3,13 @@ package model;
 import java.util.ArrayList;
 //import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.writeToJson;
+
 //represents a D&D campaign showing all characters added and abilities to edit character
-public class Campaign {
+public class Campaign implements writeToJson{
 
     ArrayList<Character> characters;
     Character current;
@@ -77,6 +82,23 @@ public class Campaign {
     //EFFECTS: get current character; null if not set
     public Character getCurrentCharacter() {
         return current;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("characters", charactersToJson());
+        return json;
+    }
+
+    //EFFECTS: returns characters in campaign as JSON list
+    private JSONArray charactersToJson() {
+        JSONArray array = new JSONArray();
+
+        for (model.Character c:characters) {
+            array.put(c.toJson());
+        }
+        return array;
     }
 
 }

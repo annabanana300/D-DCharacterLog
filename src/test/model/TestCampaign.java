@@ -114,4 +114,6 @@ public class TestCampaign {
         campaign.currentCharacter(c2);
         assertEquals(c2, campaign.getCurrentCharacter());
     }
+
+    
 }

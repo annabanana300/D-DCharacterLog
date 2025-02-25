@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.writeToJson;
+
 //represents a character in a D&D campaign; includes methods to edit character
-public class Character {
+public class Character implements writeToJson{
     String name;
     String race;
     String characterClass;
@@ -48,6 +52,16 @@ public class Character {
 
     public String getBackstory() {
         return backstory;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject character = new JSONObject();
+        character.put("name", name);
+        character.put("race", race);
+        character.put("class", characterClass);
+        character.put("backstory", backstory);
+        return character;
     }
 
 }
