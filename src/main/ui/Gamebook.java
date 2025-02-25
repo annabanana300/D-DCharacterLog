@@ -1,19 +1,30 @@
 package ui;
 
 import model.Campaign;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 //UI class allowing user to access app's functions
 public class Gamebook {
+    private static final String FILE_DEST = "./data/campaign.json";
     private Campaign campaign;
     private Scanner scanner;
     private boolean appRunning;
 
+    private JsonWriter writer;
+    private JsonReader reader;
+
     // EFFECTS: boots up Campaign console ui application
-    public Gamebook() {
+    public Gamebook() throws FileNotFoundException{
         this.scanner = new Scanner(System.in);
         campaign = new Campaign();
+
+        writer = new JsonWriter(FILE_DEST);
+        reader = new JsonReader(FILE_DEST);
+        
         appRunning = true;
         System.out.println("Welcome to your D&D Campaign Character Logbook!");
 
