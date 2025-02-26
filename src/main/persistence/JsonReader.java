@@ -22,14 +22,14 @@ public class JsonReader {
 
     //EFFECTS: reads a Campaign from saved file and returns it
     //throws IOException if data cannot be read
-    public Campaign read() throws IOException{
+    public Campaign read() throws IOException {
         String data = readFile(source);
         JSONObject jsonObject = new JSONObject(data);
         return parseCampaign(jsonObject);
     }
 
     //reads file as string, returns string
-    private String readFile(String source) throws IOException{
+    private String readFile(String source) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
@@ -61,14 +61,14 @@ public class JsonReader {
     private void addCharacter(Campaign c, JSONObject jsonObject) {
         String characterName = jsonObject.getString("name");
         String race = jsonObject.getString("race");
-        String Characterclass = jsonObject.getString("class");
+        String characterClass = jsonObject.getString("class");
         String backstory = jsonObject.getString("backstory");
         
         model.Character character = new Character();
 
         character.setName(characterName);
         character.setRace(race);
-        character.setClass(Characterclass);
+        character.setClass(characterClass);
         character.setBackstory(backstory);
 
         c.addCharacter(character);

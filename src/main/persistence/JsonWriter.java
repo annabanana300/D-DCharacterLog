@@ -1,4 +1,5 @@
 package persistence;
+
 import model.Campaign;
 import org.json.JSONObject;
 import java.io.*;
@@ -33,7 +34,7 @@ public class JsonWriter {
 
     //MODIFIES: this
     //EFFECTS: print and save JSON string to file
-    private void saveToFile(String jString) {
-        writer.print(jString);
+    private void saveToFile(String jsonString) {
+        writer.print(jsonString);
     }
 }

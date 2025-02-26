@@ -2,6 +2,9 @@ package persistence;
 
 import model.Campaign;
 import model.Character;
+
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,10 +13,20 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class TestJsonWriter extends TestJson{
+class TestJsonWriter extends TestJson {
     private Campaign campaign;
     JsonWriter writer;
     JsonReader reader;
+    model.Character taro = new Character();
+
+    @BeforeEach
+    void makeCharacter() {
+        //character to add
+        taro.setName("Taro");
+        taro.setRace("Half-Elf");
+        taro.setClass("Cleric");
+        taro.setBackstory("Taro wears a flowered eyepatch on her eye after having poisoned tea spilled on her.");
+    }
 
     @Test
     void testWriteInvalidFile() {
@@ -51,11 +64,6 @@ class TestJsonWriter extends TestJson{
         try {
             campaign = new Campaign();
             //make two characters to add to campaign
-            model.Character taro = new Character();
-            taro.setName("Taro");
-            taro.setRace("Half-Elf");
-            taro.setClass("Cleric");
-            taro.setBackstory("Taro wears a flowered eyepatch on her left eye after having poisoned tea spilled on her eye.");
             campaign.addCharacter(taro);
 
             model.Character peach = new Character();

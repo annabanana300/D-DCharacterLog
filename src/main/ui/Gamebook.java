@@ -5,6 +5,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //UI class allowing user to access app's functions
@@ -17,14 +18,14 @@ public class Gamebook {
     private JsonWriter writer;
     private JsonReader reader;
 
-    // EFFECTS: boots up Campaign console ui application
-    public Gamebook() throws FileNotFoundException{
+    // EFFECTS: constructs Campaign console ui application
+    public Gamebook() throws FileNotFoundException {
         this.scanner = new Scanner(System.in);
         campaign = new Campaign();
 
         writer = new JsonWriter(FILE_DEST);
         reader = new JsonReader(FILE_DEST);
-        
+
         appRunning = true;
         System.out.println("Welcome to your D&D Campaign Character Logbook!");
 
@@ -46,6 +47,8 @@ public class Gamebook {
         System.out.println("\nSelect an option on your keyboard:");
         System.out.println("q: View all characters");
         System.out.println("w: Add a new character");
+        System.out.println("p: Save current campaign to file");
+        System.out.println("o: Load campaign from file");
         System.out.println("e: Close application");
     }
 
@@ -59,11 +62,39 @@ public class Gamebook {
             case "w":
                 addCharacter();
                 break;
+            case "p":
+                saveCampaign();
+                break;
+            case "o":
+                loadCampaign();
+                break;
             case "e":
                 quit();
                 break;
             default:
                 System.out.println("Invalid option");
+        }
+    }
+
+    //EFFECTS: save campaign to file
+    private void saveCampaign() {
+        try {
+            writer.openWriter();
+            writer.write(campaign);
+            writer.closeWriter();
+            System.out.println("Successfully saved campaign to" + FILE_DEST);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error writing to file");
+        }
+    }
+
+    //EFFECTS: loads saved campaign
+    private void loadCampaign() {
+        try {
+            campaign = reader.read();
+            System.out.println("Loaded campaign from" + FILE_DEST);
+        } catch (IOException e) {
+            System.out.println("Error: Please try again");
         }
     }
 

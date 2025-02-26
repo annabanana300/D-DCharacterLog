@@ -4,10 +4,10 @@ import model.Campaign;
 
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
-import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestJsonReader extends TestJson{
+class TestJsonReader extends TestJson {
     private Campaign campaign;
 
     @Test

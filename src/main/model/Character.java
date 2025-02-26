@@ -2,10 +2,10 @@ package model;
 
 import org.json.JSONObject;
 
-import persistence.writeToJson;
+import persistence.Writable;
 
 //represents a character in a D&D campaign; includes methods to edit character
-public class Character implements writeToJson{
+public class Character implements Writable {
     String name;
     String race;
     String characterClass;

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import persistence.writeToJson;
+import persistence.Writable;
 
 //represents a D&D campaign showing all characters added and abilities to edit character
-public class Campaign implements writeToJson{
+public class Campaign implements Writable {
 
     ArrayList<Character> characters;
     Character current;
