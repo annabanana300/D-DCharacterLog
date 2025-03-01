@@ -55,6 +55,7 @@ public class Character implements Writable {
     }
 
     @Override
+    //EFFECTS: puts character into json file
     public JSONObject toJson() {
         JSONObject character = new JSONObject();
         character.put("name", name);

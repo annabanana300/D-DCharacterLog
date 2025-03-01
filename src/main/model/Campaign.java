@@ -85,6 +85,7 @@ public class Campaign implements Writable {
     }
 
     @Override
+    //EFFECTS: puts all the characters in campaign into Json file
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("characters", charactersToJson());
