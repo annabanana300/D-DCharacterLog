@@ -1,12 +1,16 @@
 package persistence;
 
 import model.Campaign;
-import org.json.JSONObject;
+//import org.json.JSONObject;
 import java.io.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class JsonWriter {
     private PrintWriter writer;
     private String destination;
+
+    JSONArray jsonArray = new JSONArray();
 
     //EFFECTS: constructs writer
     public JsonWriter(String destination) {

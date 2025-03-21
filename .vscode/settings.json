@@ -1,11 +1,13 @@
 {
     "java.project.sourcePaths": [
-        "src/main",
-        "src/test"
+        "src\\main",
+        "src\\test"
     ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "c:\\Users\\owner\\Downloads\\json-simple-1.1.1.jar",
+        "c:\\Users\\owner\\Desktop\\CPSC 210\\PROJECT\\ProjectStarter\\lib\\junit-platform-console-standalone-1.10.2.jar",
+        "c:\\Users\\owner\\Desktop\\CPSC 210\\PROJECT\\ProjectStarter\\lib\\json-20240303.jar"
     ],
     "java.checkstyle.configuration": "${workspaceFolder}/checkstyle.xml",
     "java.checkstyle.version": "10.2"

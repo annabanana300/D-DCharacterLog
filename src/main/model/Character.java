@@ -19,6 +19,14 @@ public class Character implements Writable {
         backstory = null;
     }
 
+    //constructor for character that takes params
+    public Character(String name, String race, String characterClass, String backstory) {
+        this.name = name;
+        this.race = null;
+        this.characterClass = null;
+        this.backstory = null;
+    }
+
     //setters
     public void setName(String name) {
         this.name = name;

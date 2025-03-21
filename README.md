@@ -46,3 +46,6 @@ As a user, I want to have the option to load my saved campaign file and resume f
 
 ## CITATIONS:
 JSON Serialization Demo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+Oracle Docs for building GUIS: https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html
+    - Table Render Demo
+    - Menu Layout Demo
