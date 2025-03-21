@@ -5,13 +5,9 @@ import javax.swing.table.*;
 
 import model.Campaign;
 import model.Character;
-import persistence.JsonReader;
-import persistence.JsonWriter;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.*;
 
 //GUI to set up a new window of app
 public class CampaignGUI {
