@@ -5,11 +5,15 @@ import model.Character;
 import persistence.GuiReader;
 import persistence.GuiWriter;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class GUI extends JFrame {
     private Campaign campaign;
@@ -28,6 +32,15 @@ public class GUI extends JFrame {
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
+        // Set the icon for the JFrame
+        try {
+            // Load the image file (replace "resources/images/icon.png" with your image path)
+            BufferedImage iconImage = ImageIO.read(new File("src\\main\\ui\\gui\\dndlogo.png"));
+            setIconImage(iconImage); // Set the icon for the JFrame
+        } catch (IOException e) {
+            System.err.println("Error loading icon: " + e.getMessage());
+        }
 
         // Table setup
         String[] columnNames = { "Name", "Race", "Class", "Backstory" };
@@ -144,14 +157,5 @@ public class GUI extends JFrame {
         fileMenu.add(loadMenuItem);
         menuBar.add(fileMenu);
         setJMenuBar(menuBar); // Add the menu bar to the frame
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
     }
 }

@@ -15,7 +15,6 @@ public class Campaign implements Writable {
 
     ArrayList<Character> characters;
     Character current;
-    private static final String FILE_DEST = "./data/campaign.json";
 
     // EFFECTS: constructs an empty campaign
     public Campaign() {
