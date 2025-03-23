@@ -42,7 +42,7 @@ public class Campaign implements Writable {
         characters.remove(current);
     }
 
-    // REQUIRES: character already exists in campaign
+    // REQUIRES: character already exists in campaign ; campaign is not empty
     // MODIFIES: this
     // EFFECTS: removes a character from campaign
     public void removeCharacter(String name) {

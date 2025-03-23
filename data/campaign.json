@@ -1,16 +1,10 @@
 {
   "characters": [
     {
-      "name": "A",
-      "race": "A",
-      "class": "A",
-      "backstory": "A"
-    },
-    {
-      "name": "B",
-      "race": "B",
-      "class": "B",
-      "backstory": "B"
+      "name": "Taro",
+      "race": "Elf",
+      "class": "Cleric",
+      "backstory": ""
     }
   ]
 }

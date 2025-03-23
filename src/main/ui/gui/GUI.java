@@ -2,8 +2,8 @@ package ui.gui;
 
 import model.Campaign;
 import model.Character;
-import persistence.GUIReader;
-import persistence.GUIWriter;
+import persistence.GuiReader;
+import persistence.GuiWriter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +22,7 @@ public class GUI extends JFrame {
         initializeUI();
     }
 
+    @SuppressWarnings("methodlength")
     private void initializeUI() {
         setTitle("Campaign Manager");
         setSize(600, 400);
@@ -85,14 +86,14 @@ public class GUI extends JFrame {
 
                     campaign.addCharacter(new Character(name, race, characterClass, backstory));
                 }
-                GUIWriter.saveCampaign(campaign);
+                GuiWriter.saveCampaign(campaign);
             }
         });
 
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Campaign loadedCampaign = GUIReader.loadCampaign();
+                Campaign loadedCampaign = GuiReader.loadCampaign();
                 if (loadedCampaign != null) {
                     tableModel.setRowCount(0); // Clear the table
                     for (Character character : loadedCampaign.getCharacters()) {

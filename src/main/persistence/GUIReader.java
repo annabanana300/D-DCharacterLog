@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class GUIReader {
+public class GuiReader {
+    // main method for reading campaign data from json file
+    @SuppressWarnings("methodlength")
     public static Campaign loadCampaign() {
         Campaign campaign = new Campaign();
         try (Scanner scanner = new Scanner(new File("./data/campaign.json"))) {
@@ -24,7 +26,10 @@ public class GUIReader {
                 entry = entry.replaceAll("[{}\"]", "").trim();
                 String[] fields = entry.split(",");
 
-                String name = null, race = null, characterClass = null, backstory = null;
+                String name = null;
+                String race = null;
+                String characterClass = null;
+                String backstory = null;
                 for (String field : fields) {
                     String[] keyValue = field.split(":");
                     String key = keyValue[0].trim();
