@@ -49,6 +49,7 @@ public class GUI extends JFrame {
         JButton saveButton = new JButton("Save Campaign");
         JButton loadButton = new JButton("Load Campaign");
 
+        // Action listener for adding a character
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,6 +57,7 @@ public class GUI extends JFrame {
             }
         });
 
+        // Action listener for removing a character
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,6 +68,7 @@ public class GUI extends JFrame {
             }
         });
 
+        // Action listener for saving campaign data
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,6 +93,7 @@ public class GUI extends JFrame {
             }
         });
 
+        // Action listener for loading campaign data
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,6 +123,7 @@ public class GUI extends JFrame {
         JMenuItem saveMenuItem = new JMenuItem("Save Campaign");
         JMenuItem loadMenuItem = new JMenuItem("Load Campaign");
 
+        //debugging statement for action listener to detect save button
         saveMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
