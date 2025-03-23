@@ -1,13 +1,7 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -128,65 +122,11 @@ public class Campaign implements Writable {
         writer.openWriter();
         writer.write(this);
         writer.closeWriter();
-        // File file = new File(FILE_DEST);
-        // BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-
-        // // Start of JSON array
-        // writer.write("[\n");
-
-        // for (int i = 0; i < characters.size(); i++) {
-        //     Character character = characters.get(i);
-            
-        //     writer.write("  {\n");
-        //     writer.write("    \"name\": \"" + character.getName() + "\",\n");
-        //     writer.write("    \"race\": \"" + character.getRace() + "\",\n");
-        //     writer.write("    \"class\": \"" + character.getCharacterClass() + "\",\n");
-        //     writer.write("    \"backstory\": \"" + character.getBackstory() + "\"\n");
-        //     writer.write("  }");
-
-        //     // Add a comma between character objects except after the last one
-        //     if (i < characters.size() - 1) {
-        //         writer.write(",");
-        //     }
-        //     writer.write("\n");
-        // }
-
-        // writer.write("]\n");
-
-        // writer.close();
     }
 
     // EFFECTS: loads a saved GUI version of campaign
     public void loadCampaignFromFile() throws IOException {
         JsonReader reader = new JsonReader(FILE_DEST);
         reader.read();
-        
-        // File file = new File(FILE_DEST);
-        // if (!file.exists()) {
-        //     return;
-        // }
-
-        // BufferedReader reader = new BufferedReader(new FileReader(file));
-        // String line;
-        // ArrayList<Character> loadedCharacters = new ArrayList<>();
-
-        // while ((line = reader.readLine()) != null) {
-        //     if (line.contains("\"name\":")) {
-        //         String name = line.split(":")[1].trim().replace("\"", "").replace(",", "");
-        //         String race = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
-        //         String characterClass = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
-        //         String backstory = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
-
-        //         // Create a new character object and add it to the loaded characters list
-        //         Character character = new Character(name, race, characterClass, backstory);
-        //         loadedCharacters.add(character);
-
-        //         reader.readLine(); 
-        //         reader.readLine(); 
-        //     }
-        // }
-
-        // characters = loadedCharacters;  // Set the campaign's characters to the loaded list
-        // reader.close();
     }
 }

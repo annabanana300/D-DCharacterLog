@@ -22,9 +22,9 @@ public class Character implements Writable {
     //constructor for character that takes params
     public Character(String name, String race, String characterClass, String backstory) {
         this.name = name;
-        this.race = null;
-        this.characterClass = null;
-        this.backstory = null;
+        this.race = race;
+        this.characterClass = characterClass;
+        this.backstory = backstory;
     }
 
     //setters

@@ -92,7 +92,7 @@ public class GUI extends JFrame {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Campaign loadedCampaign = Reader.loadCampaign("campaign.json");
+                Campaign loadedCampaign = Reader.loadCampaign();
                 if (loadedCampaign != null) {
                     tableModel.setRowCount(0); // Clear the table
                     for (Character character : loadedCampaign.getCharacters()) {

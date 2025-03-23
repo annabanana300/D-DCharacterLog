@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Reader {
-    public static Campaign loadCampaign(String filePath) {
+    public static Campaign loadCampaign() {
         Campaign campaign = new Campaign();
-        try (Scanner scanner = new Scanner(new File(filePath))) {
+        try (Scanner scanner = new Scanner(new File("./data/campaign.json"))) {
             StringBuilder jsonContent = new StringBuilder();
             while (scanner.hasNextLine()) {
                 jsonContent.append(scanner.nextLine().trim());
@@ -51,7 +51,7 @@ public class Reader {
                 }
             }
 
-            System.out.println("Campaign data loaded successfully from " + filePath);
+            System.out.println("Campaign data loaded successfully from " + "./data/campaign.json");
         } catch (FileNotFoundException e) {
             System.err.println("Error loading campaign data: " + e.getMessage());
         }
