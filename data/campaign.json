@@ -5,6 +5,12 @@
       "race": "A",
       "class": "A",
       "backstory": "A"
+    },
+    {
+      "name": "B",
+      "race": "B",
+      "class": "B",
+      "backstory": "B"
     }
   ]
 }

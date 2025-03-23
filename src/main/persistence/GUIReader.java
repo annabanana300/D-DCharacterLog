@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Reader {
+public class GUIReader {
     public static Campaign loadCampaign() {
         Campaign campaign = new Campaign();
         try (Scanner scanner = new Scanner(new File("./data/campaign.json"))) {

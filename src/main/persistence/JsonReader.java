@@ -73,9 +73,4 @@ public class JsonReader {
 
         c.addCharacter(character);
     }
-
-    //EFFECTS: closes reader
-    public void close() throws IOException {
-        this.close();
-    }
 }
