@@ -19,7 +19,7 @@ public class Gamebook {
     private JsonReader reader;
 
     // EFFECTS: constructs Campaign console ui application
-    public Gamebook() throws FileNotFoundException {
+    public Gamebook() throws IOException {
         this.scanner = new Scanner(System.in);
         campaign = new Campaign();
 

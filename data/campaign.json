@@ -1,14 +1,10 @@
-{"characters": [
+{
+  "characters": [
     {
-        "backstory": "Peach makes a living as a spy for those who wish to uncover secrets.",
-        "race": "Fairy",
-        "name": "Peach",
-        "class": "Rogue"
-    },
-    {
-        "backstory": "Taro wears an eyepatch on her left eye.",
-        "race": "Half-Elf",
-        "name": "Taro",
-        "class": "Cleric"
+      "name": "a",
+      "race": "",
+      "class": "",
+      "backstory": ""
     }
-]}
+  ]
+}

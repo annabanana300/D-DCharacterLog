@@ -7,10 +7,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import persistence.Writable;
 
 //represents a D&D campaign showing all characters added and abilities to edit character
@@ -18,6 +21,7 @@ public class Campaign implements Writable {
 
     ArrayList<Character> characters;
     Character current;
+    private static final String FILE_DEST = "./data/campaign.json";
 
     // EFFECTS: constructs an empty campaign
     public Campaign() {
@@ -109,7 +113,7 @@ public class Campaign implements Writable {
     }
 
     // EFFECTS: returns characters in campaign as JSON list
-    private JSONArray charactersToJson() {
+    public JSONArray charactersToJson() {
         JSONArray array = new JSONArray();
 
         for (model.Character c : characters) {
@@ -120,56 +124,69 @@ public class Campaign implements Writable {
 
     // EFFECTS: saves campaign in GUI app to file
     public void saveCampaignToFile() throws IOException {
-        File file = new File("campaign.json"); // Fixed file destination
-        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        JsonWriter writer = new JsonWriter(FILE_DEST);
+        writer.openWriter();
+        writer.write(this);
+        writer.closeWriter();
+        // File file = new File(FILE_DEST);
+        // BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
-        writer.write("[\n");
-        for (int i = 0; i < characters.size(); i++) {
-            Character character = characters.get(i);
-            writer.write("  {\n");
-            writer.write("    \"name\": \"" + character.getName() + "\",\n");
-            writer.write("    \"race\": \"" + character.getRace() + "\",\n");
-            writer.write("    \"class\": \"" + character.getCharacterClass() + "\",\n");
-            writer.write("    \"backstory\": \"" + character.getBackstory() + "\"\n");
-            writer.write("  }");
-            if (i < characters.size() - 1) {
-                writer.write(",");
-            }
-            writer.write("\n");
-        }
-        writer.write("]\n");
+        // // Start of JSON array
+        // writer.write("[\n");
 
-        writer.close();
+        // for (int i = 0; i < characters.size(); i++) {
+        //     Character character = characters.get(i);
+            
+        //     writer.write("  {\n");
+        //     writer.write("    \"name\": \"" + character.getName() + "\",\n");
+        //     writer.write("    \"race\": \"" + character.getRace() + "\",\n");
+        //     writer.write("    \"class\": \"" + character.getCharacterClass() + "\",\n");
+        //     writer.write("    \"backstory\": \"" + character.getBackstory() + "\"\n");
+        //     writer.write("  }");
+
+        //     // Add a comma between character objects except after the last one
+        //     if (i < characters.size() - 1) {
+        //         writer.write(",");
+        //     }
+        //     writer.write("\n");
+        // }
+
+        // writer.write("]\n");
+
+        // writer.close();
     }
 
     // EFFECTS: loads a saved GUI version of campaign
     public void loadCampaignFromFile() throws IOException {
-        File file = new File("campaign.json"); // Fixed file destination
-        if (!file.exists()) {
-            return; // If file doesn't exist, return early
-        }
+        JsonReader reader = new JsonReader(FILE_DEST);
+        reader.read();
+        
+        // File file = new File(FILE_DEST);
+        // if (!file.exists()) {
+        //     return;
+        // }
 
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line;
-        ArrayList<Character> loadedCharacters = new ArrayList<>();
+        // BufferedReader reader = new BufferedReader(new FileReader(file));
+        // String line;
+        // ArrayList<Character> loadedCharacters = new ArrayList<>();
 
-        while ((line = reader.readLine()) != null) {
-            if (line.contains("\"name\":")) {
-                String name = line.split(":")[1].trim().replace("\"", "").replace(",", "");
-                String race = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
-                String characterClass = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
-                String backstory = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
+        // while ((line = reader.readLine()) != null) {
+        //     if (line.contains("\"name\":")) {
+        //         String name = line.split(":")[1].trim().replace("\"", "").replace(",", "");
+        //         String race = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
+        //         String characterClass = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
+        //         String backstory = reader.readLine().split(":")[1].trim().replace("\"", "").replace(",", "");
 
-                Character character = new Character(name, race, characterClass, backstory);
-                loadedCharacters.add(character);
+        //         // Create a new character object and add it to the loaded characters list
+        //         Character character = new Character(name, race, characterClass, backstory);
+        //         loadedCharacters.add(character);
 
-                // Skip to the next character or closing bracket
-                reader.readLine(); // Skip closing }
-                reader.readLine(); // Skip comma or closing bracket
-            }
-        }
+        //         reader.readLine(); 
+        //         reader.readLine(); 
+        //     }
+        // }
 
-        characters = loadedCharacters;
-        reader.close();
+        // characters = loadedCharacters;  // Set the campaign's characters to the loaded list
+        // reader.close();
     }
 }
