@@ -43,6 +43,21 @@ As a user, I want to have the option to save my current campaign to file.
 
 As a user, I want to have the option to load my saved campaign file and resume from where I left off.
 
+## Instructions for End User
+When you are ready to add a character to your campaign, click the 'Add Character' button and enter each field
+appropriately. Remember to press ENTER after each prompt so your character data saves!
+
+If you want to save the characters in your campaign, click 'Save Campaign' and you can safely close the application.
+The next time you open it, you can view all your saved characters by clicking 'Load Campaign'.
+
+Select a character in the table before clicking 'Remove Character' to remove them. Bye bye!
+
+Edit any attribute of your character in the table by clicking on the cell you want to edit. Remember to press ENTER
+to make sure your change registers in the table.
+
+In the top left corner you will see the trust D&D logo! When you open the application this D&D logo also becomes
+the application's signature icon on your device's toolbar.
+
 
 ## CITATIONS:
 JSON Serialization Demo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

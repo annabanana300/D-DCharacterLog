@@ -1,13 +1,10 @@
 package model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import persistence.JsonReader;
-import persistence.JsonWriter;
 import persistence.Writable;
 
 //represents a D&D campaign showing all characters added and abilities to edit character
