@@ -66,6 +66,27 @@ public class TestCampaign {
     }
 
     @Test
+    void testRemoveCharacterGUI() {
+        campaign.addCharacter(c2);
+        campaign.addCharacter(c1);
+        c1.setName("Asher");
+        c2.setName("Ash");
+        campaign.removeCharacter("Asher");
+        assertEquals(1, campaign.getCharacters().size());
+    }
+
+    @Test
+    void testRemoveCharacterGUIBoth() {
+        campaign.addCharacter(c2);
+        campaign.addCharacter(c1);
+        c1.setName("Asher");
+        c2.setName("Ash");
+        campaign.removeCharacter(c2.getName());
+        campaign.removeCharacter(c1.getName());
+        assertEquals(0, campaign.getCharacters().size());
+    }
+
+    @Test
     void testEditCharacterName() {
         campaign.addCharacter(c2);
         campaign.currentCharacter(c2);

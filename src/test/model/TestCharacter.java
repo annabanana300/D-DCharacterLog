@@ -1,6 +1,6 @@
 package model;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +21,15 @@ public class TestCharacter {
         assertNull(character.getRace());
         assertNull(character.getCharacterClass());
         assertNull(character.getBackstory());
+    }
+
+    @Test
+    void testConstructorParameters() {
+        model.Character taro = new Character("Taro", "Elf", "Cleric", "Wears eyepatch");
+        assertEquals("Taro", taro.getName());
+        assertEquals("Elf", taro.getRace());
+        assertEquals("Cleric", taro.getCharacterClass());
+        assertEquals("Wears eyepatch", taro.getBackstory());
     }
 
     

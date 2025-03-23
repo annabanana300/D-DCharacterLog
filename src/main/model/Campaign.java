@@ -49,6 +49,7 @@ public class Campaign implements Writable {
         for (Character c : getCharacters()) {
             if (c.getName().equals(name)) {
                 characters.remove(c);
+                break;
             }
         }
     }
@@ -114,19 +115,5 @@ public class Campaign implements Writable {
             array.put(c.toJson());
         }
         return array;
-    }
-
-    // EFFECTS: saves campaign in GUI app to file
-    public void saveCampaignToFile() throws IOException {
-        JsonWriter writer = new JsonWriter(FILE_DEST);
-        writer.openWriter();
-        writer.write(this);
-        writer.closeWriter();
-    }
-
-    // EFFECTS: loads a saved GUI version of campaign
-    public void loadCampaignFromFile() throws IOException {
-        JsonReader reader = new JsonReader(FILE_DEST);
-        reader.read();
     }
 }
