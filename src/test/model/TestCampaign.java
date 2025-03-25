@@ -76,7 +76,7 @@ public class TestCampaign {
     }
 
     @Test
-    void testRemoveCharacterGUIBoth() {
+    void testRemoveCharacterGuiBoth() {
         campaign.addCharacter(c2);
         campaign.addCharacter(c1);
         c1.setName("Asher");

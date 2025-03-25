@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+//JsonReader for GUI; reads json file and writes to JTable
 public class GuiReader {
     // main method for reading campaign data from json file
     @SuppressWarnings("methodlength")
