@@ -29,6 +29,7 @@ public class Campaign implements Writable {
     // EFFECTS: creates a new character to add to campaign
     public void addCharacter(Character c) {
         characters.add(c);
+        EventLog.getInstance().logEvent(new Event("Please welcome new character added: " + c.name));
     }
 
     // REQUIRES: character already exists in campaign && current != null
@@ -45,6 +46,7 @@ public class Campaign implements Writable {
         for (Character c : getCharacters()) {
             if (c.getName().equals(name)) {
                 characters.remove(c);
+                EventLog.getInstance().logEvent(new Event("Character " + c.name + " was removed. Bye bye!"));
                 break;
             }
         }
@@ -55,6 +57,7 @@ public class Campaign implements Writable {
     // EFFECTS: user can edit existing character name
     public void editCharacterName(String name) {
         current.setName(name);
+        EventLog.getInstance().logEvent(new Event(current.name + "'s name has been changed."));
     }
 
     // REQUIRES: character exists in campaign && current != null
@@ -62,6 +65,7 @@ public class Campaign implements Writable {
     // EFFECTS: user can edit existing character's race
     public void editCharacterRace(String race) {
         current.setRace(race);
+        EventLog.getInstance().logEvent(new Event(current.name + "'s race has been changed."));
     }
 
     // REQUIRES: character exists in campaign && current != null
@@ -69,6 +73,7 @@ public class Campaign implements Writable {
     // EFFECTS: user can edit existing character's class
     public void editCharacterClass(String characterClass) {
         current.setClass(characterClass);
+        EventLog.getInstance().logEvent(new Event(current.name + "'s class has been changed."));
     }
 
     // REQUIRES: character exists in campaign && current != null
@@ -76,6 +81,7 @@ public class Campaign implements Writable {
     // EFFECTS: user can edit existing character's backstory
     public void editCharacterBackstory(String story) {
         current.setBackstory(story);
+        EventLog.getInstance().logEvent(new Event(current.name + "'s backstory has been changed."));
     }
 
     // MODIFIES: this

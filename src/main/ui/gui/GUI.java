@@ -2,6 +2,9 @@ package ui.gui;
 
 import model.Campaign;
 import model.Character;
+import model.Event;
+import model.EventLog;
+import model.EventLog;
 import persistence.GuiReader;
 import persistence.GuiWriter;
 
@@ -11,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,12 +35,21 @@ public class GUI extends JFrame {
     private void initializeUI() {
         setTitle("Campaign Manager");
         setSize(600, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("You have exited the application. Here is your event log:");
+                printLog(EventLog.getInstance());
+            }
+        });
 
         // Set the icon for the JFrame
         try {
-            // Load the image file (replace "resources/images/icon.png" with your image path)
+            // Load the image file (replace "resources/images/icon.png" with your image
+            // path)
             BufferedImage iconImage = ImageIO.read(new File("src\\main\\ui\\gui\\dndlogo.png"));
             setIconImage(iconImage); // Set the icon for the JFrame
         } catch (IOException e) {
@@ -136,7 +150,7 @@ public class GUI extends JFrame {
         JMenuItem saveMenuItem = new JMenuItem("Save Campaign");
         JMenuItem loadMenuItem = new JMenuItem("Load Campaign");
 
-        //debugging statement for action listener to detect save button
+        // debugging statement for action listener to detect save button
         saveMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,5 +171,12 @@ public class GUI extends JFrame {
         fileMenu.add(loadMenuItem);
         menuBar.add(fileMenu);
         setJMenuBar(menuBar); // Add the menu bar to the frame
+    }
+
+    // EFFECTS: prints event log to console
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString());
+        }
     }
 }
