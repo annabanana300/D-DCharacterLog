@@ -4,7 +4,6 @@ import model.Campaign;
 import model.Character;
 import model.Event;
 import model.EventLog;
-import model.EventLog;
 import persistence.GuiReader;
 import persistence.GuiWriter;
 
@@ -38,23 +37,8 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.out.println("You have exited the application. Here is your event log:");
-                printLog(EventLog.getInstance());
-            }
-        });
-
-        // Set the icon for the JFrame
-        try {
-            // Load the image file (replace "resources/images/icon.png" with your image
-            // path)
-            BufferedImage iconImage = ImageIO.read(new File("src\\main\\ui\\gui\\dndlogo.png"));
-            setIconImage(iconImage); // Set the icon for the JFrame
-        } catch (IOException e) {
-            System.err.println("Error loading icon: " + e.getMessage());
-        }
+        windowClosing();
+        setIcon();
 
         // Table setup
         String[] columnNames = { "Name", "Race", "Class", "Backstory" };
@@ -75,74 +59,8 @@ public class GUI extends JFrame {
         JButton removeButton = new JButton("Remove Character");
         JButton saveButton = new JButton("Save Campaign");
         JButton loadButton = new JButton("Load Campaign");
-
-        // Action listener for adding a character
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tableModel.addRow(new String[] { "", "", "", "" });
-            }
-        });
-
-        // Action listener for removing a character
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedRow = characterTable.getSelectedRow();
-                if (selectedRow >= 0) {
-                    tableModel.removeRow(selectedRow);
-                }
-            }
-        });
-
-        // Action listener for saving campaign data
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Save Campaign button clicked!"); // ensure button processes click
-                campaign = new Campaign();
-                for (int i = 0; i < tableModel.getRowCount(); i++) {
-                    String name = (String) tableModel.getValueAt(i, 0);
-                    String race = (String) tableModel.getValueAt(i, 1);
-                    String characterClass = (String) tableModel.getValueAt(i, 2);
-                    String backstory = (String) tableModel.getValueAt(i, 3);
-
-                    // make sure character data is being properly read and saved
-                    System.out.println("Character " + (i + 1) + ":");
-                    System.out.println("  Name: " + name);
-                    System.out.println("  Race: " + race);
-                    System.out.println("  Class: " + characterClass);
-                    System.out.println("  Backstory: " + backstory);
-
-                    campaign.addCharacter(new Character(name, race, characterClass, backstory));
-                }
-                GuiWriter.saveCampaign(campaign);
-            }
-        });
-
-        // Action listener for loading campaign data
-        loadButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Campaign loadedCampaign = GuiReader.loadCampaign();
-                if (loadedCampaign != null) {
-                    tableModel.setRowCount(0); // Clear the table
-                    for (Character character : loadedCampaign.getCharacters()) {
-                        tableModel.addRow(new String[] {
-                                character.getName(),
-                                character.getRace(),
-                                character.getCharacterClass(),
-                                character.getBackstory()
-                        });
-                    }
-                }
-            }
-        });
-
-        buttonPanel.add(addButton);
-        buttonPanel.add(removeButton);
-        buttonPanel.add(saveButton);
-        buttonPanel.add(loadButton);
+        addButtonListeners(saveButton, loadButton, addButton, removeButton);
+        addButtonsToPanel(buttonPanel, saveButton, loadButton, addButton, removeButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
         JMenuBar menuBar = new JMenuBar();
@@ -173,10 +91,122 @@ public class GUI extends JFrame {
         setJMenuBar(menuBar); // Add the menu bar to the frame
     }
 
+    // EFFECTS: set D&D icon image for app
+    public void setIcon() {
+        try {
+            BufferedImage iconImage = ImageIO.read(new File("src\\main\\ui\\gui\\dndlogo.png"));
+            setIconImage(iconImage); // Set the icon for the JFrame
+        } catch (IOException e) {
+            System.err.println("Error loading icon: " + e.getMessage());
+        }
+    }
+
+    // EFFECTS: when exiting app, run window listener to print events to console
+    public void windowClosing() {
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("You have exited the application. Here is your event log:");
+                printLog(EventLog.getInstance());
+            }
+        });
+    }
+
     // EFFECTS: prints event log to console
     public void printLog(EventLog el) {
         for (Event next : el) {
             System.out.println(next.toString());
         }
+    }
+
+    // EFFECTS: adds action listeners for save, load, add, remove
+    public void addButtonListeners(JButton s, JButton l, JButton a, JButton r) {
+        saveButtonAL(s);
+        loadButtonAL(l);
+        addButtonAL(a);
+        removeButtonAL(r);
+    }
+
+    // EFFECTS: adds action listener for save campaign button
+    public void saveButtonAL(JButton saveButton) {
+        // Action listener for saving campaign data
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Save Campaign button clicked!"); // ensure button processes click
+                campaign = new Campaign();
+                for (int i = 0; i < tableModel.getRowCount(); i++) {
+                    String name = (String) tableModel.getValueAt(i, 0);
+                    String race = (String) tableModel.getValueAt(i, 1);
+                    String characterClass = (String) tableModel.getValueAt(i, 2);
+                    String backstory = (String) tableModel.getValueAt(i, 3);
+
+                    // make sure character data is being properly read and saved
+                    System.out.println("Character " + (i + 1) + ":");
+                    System.out.println("  Name: " + name);
+                    System.out.println("  Race: " + race);
+                    System.out.println("  Class: " + characterClass);
+                    System.out.println("  Backstory: " + backstory);
+
+                    campaign.addCharacter(new Character(name, race, characterClass, backstory));
+                }
+                GuiWriter.saveCampaign(campaign);
+            }
+        });
+    }
+
+    // EFFECTS: adds action listener for load campaign button
+    public void loadButtonAL(JButton loadButton) {
+        // Action listener for loading campaign data
+        loadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Campaign loadedCampaign = GuiReader.loadCampaign();
+                if (loadedCampaign != null) {
+                    tableModel.setRowCount(0); // Clear the table
+                    for (Character character : loadedCampaign.getCharacters()) {
+                        tableModel.addRow(new String[] {
+                                character.getName(),
+                                character.getRace(),
+                                character.getCharacterClass(),
+                                character.getBackstory()
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    // EFFECTS: adds action listener for add character button
+    public void addButtonAL(JButton addButton) {
+        // Action listener for adding a character
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tableModel.addRow(new String[] { "", "", "", "" });
+            }
+        });
+    }
+
+    // EFFECTS: adds action listener for remove character button
+    public void removeButtonAL(JButton removeButton) {
+        // Action listener for removing a character
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = characterTable.getSelectedRow();
+                if (selectedRow >= 0) {
+                    tableModel.removeRow(selectedRow);
+                }
+            }
+        });
+    }
+
+    //EFFECTS: adds action buttons to GUI
+    public void addButtonsToPanel(JPanel buttonPanel, JButton s, JButton l, JButton a, JButton r) {
+        buttonPanel.add(a);
+        buttonPanel.add(r);
+        buttonPanel.add(s);
+        buttonPanel.add(l);
     }
 }
