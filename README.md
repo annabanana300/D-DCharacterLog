@@ -67,6 +67,18 @@ Please welcome new character added!
 Fri Mar 28 15:17:32 PDT 2025
 Character was removed. Bye bye!
 
+## PHASE 4: TASK 3
+Reflecting on the design presented in my UML class diagram, I would think to improve the design of some model and ui classes
+to better represent the 'single responsibility' principle that each class should have. Since we built both a console-based
+and GUI-based application in this project, I think the design elements of the original Campaign and Character classes
+became a bit cluttered while trying to incorporate the necessary functions for both applications.
+
+Splitting up the project into strictly console-based and GUI-based folders might be a better design for this approach, for example.
+I would make the Campaign and Character classes interfaces, and abstract out some universal methods that could be used across both
+applications. Then I would make subclasses that implement those interfaces; one set of subclasses for the console application, and
+another set of subclasses suitable for the GUI application. This way, the responsibilities of each class becomes much clearer, and
+when trying to change something for one application, I don't have to mentally juggle how my changes might affect the other application.
+
 
 ## CITATIONS:
 JSON Serialization Demo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
