@@ -29,7 +29,7 @@ public class Campaign implements Writable {
     // EFFECTS: creates a new character to add to campaign
     public void addCharacter(Character c) {
         characters.add(c);
-        EventLog.getInstance().logEvent(new Event("Please welcome new character added: " + c.name));
+        EventLog.getInstance().logEvent(new Event("Please welcome new character added!"));
         System.out.println("Add character event added");
     }
 
@@ -47,8 +47,6 @@ public class Campaign implements Writable {
         for (Character c : getCharacters()) {
             if (c.getName().equals(name)) {
                 characters.remove(c);
-                EventLog.getInstance().logEvent(new Event("Character " + c.name + " was removed. Bye bye!"));
-                System.out.println("Remove character event added");
                 break;
             }
         }
@@ -91,6 +89,8 @@ public class Campaign implements Writable {
     // EFFECTS: sets current character to null
     public void removeCurrentCharacter() {
         current = null;
+        EventLog.getInstance().logEvent(new Event("Character was removed. Bye bye!"));
+        System.out.println("Remove character event added");
     }
 
     // getters

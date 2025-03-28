@@ -87,6 +87,7 @@ public class GUI extends JFrame {
 
     // EFFECTS: prints event log to console
     public void printLog(EventLog el) {
+        //TODO: set breakpoint, step into value of eventlog to see if events are stored properly
         for (Event next : el) {
             System.out.println(next.toString());
         }
@@ -156,6 +157,7 @@ public class GUI extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Add character button clicked!");
                 tableModel.addRow(new String[] { "", "", "", "" });
             }
         });
@@ -167,9 +169,11 @@ public class GUI extends JFrame {
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Remove character button clicked!");
                 int selectedRow = characterTable.getSelectedRow();
                 if (selectedRow >= 0) {
                     tableModel.removeRow(selectedRow);
+                    campaign.removeCurrentCharacter();
                 }
             }
         });
