@@ -58,6 +58,15 @@ to make sure your change registers in the table.
 In the top left corner you will see the trust D&D logo! When you open the application this D&D logo also becomes
 the application's signature icon on your device's toolbar.
 
+## PHASE 4: TASK 2
+You have exited the application. Here is your event log:
+Fri Mar 28 15:17:25 PDT 2025
+Please welcome new character added!
+Fri Mar 28 15:17:25 PDT 2025
+Please welcome new character added!
+Fri Mar 28 15:17:32 PDT 2025
+Character was removed. Bye bye!
+
 
 ## CITATIONS:
 JSON Serialization Demo: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
