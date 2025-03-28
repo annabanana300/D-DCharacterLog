@@ -30,6 +30,7 @@ public class Campaign implements Writable {
     public void addCharacter(Character c) {
         characters.add(c);
         EventLog.getInstance().logEvent(new Event("Please welcome new character added: " + c.name));
+        System.out.println("Add character event added");
     }
 
     // REQUIRES: character already exists in campaign && current != null
@@ -47,6 +48,7 @@ public class Campaign implements Writable {
             if (c.getName().equals(name)) {
                 characters.remove(c);
                 EventLog.getInstance().logEvent(new Event("Character " + c.name + " was removed. Bye bye!"));
+                System.out.println("Remove character event added");
                 break;
             }
         }
@@ -58,6 +60,7 @@ public class Campaign implements Writable {
     public void editCharacterName(String name) {
         current.setName(name);
         EventLog.getInstance().logEvent(new Event(current.name + "'s name has been changed."));
+        System.out.println("Change character name event added");
     }
 
     // REQUIRES: character exists in campaign && current != null

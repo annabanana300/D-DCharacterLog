@@ -62,33 +62,6 @@ public class GUI extends JFrame {
         addButtonListeners(saveButton, loadButton, addButton, removeButton);
         addButtonsToPanel(buttonPanel, saveButton, loadButton, addButton, removeButton);
         add(buttonPanel, BorderLayout.SOUTH);
-
-        JMenuBar menuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
-        JMenuItem saveMenuItem = new JMenuItem("Save Campaign");
-        JMenuItem loadMenuItem = new JMenuItem("Load Campaign");
-
-        // debugging statement for action listener to detect save button
-        saveMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Save Campaign menu item clicked!");
-                saveButton.doClick(); // Trigger the save button's action
-            }
-        });
-
-        loadMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Load Campaign menu item clicked!");
-                loadButton.doClick(); // Trigger the load button's action
-            }
-        });
-
-        fileMenu.add(saveMenuItem);
-        fileMenu.add(loadMenuItem);
-        menuBar.add(fileMenu);
-        setJMenuBar(menuBar); // Add the menu bar to the frame
     }
 
     // EFFECTS: set D&D icon image for app
